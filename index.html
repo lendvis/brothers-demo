@@ -1,0 +1,1041 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Brothers Bar — кальян-бар в Самаре на Молодогвардейской</title>
+<meta name="description" content="Кальян-бар Brothers: Молодогвардейская, 90, цокольный этаж. Каждый день с 18:00, в пятницу и субботу до 02:00.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2307080a'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' fill='%23c9f31d' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,400;0,600;1,400&family=Ysabeau+Office:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#07080a; --void2:#0d0f12; --ash:#16181d;
+  --lime:#c9f31d; --red:#ff2038; --blue:#3a6dff; --amber:#ff8a1e;
+  --paper:#f3f0e8; --mute:#8d918c; --line:rgba(243,240,232,.13);
+  --serif:'Noto Serif Display',Georgia,serif;
+  --sans:'Ysabeau Office',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --ease:cubic-bezier(.23,1,.32,1);
+  --pad:20px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; position:relative; background:var(--void); color:var(--paper);
+  font-family:var(--sans); font-size:17px; line-height:1.55; font-weight:300;
+  overflow-x:hidden; -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%; height:auto; display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif); font-weight:400; margin:0; line-height:1.04; letter-spacing:-.005em}
+p{margin:0 0 1em}
+.wrap{max-width:1140px; margin:0 auto; padding-inline:var(--pad)}
+section{padding-block:clamp(56px,11vw,110px)}
+
+/* ——— служебные ——— */
+.eyebrow{
+  font-size:11.5px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--lime); font-weight:600; margin:0 0 14px;
+}
+.lead{font-size:clamp(17px,4.2vw,20px); color:#c4c7c1; max-width:46ch}
+.dim{color:var(--mute)}
+.rule{height:1px; background:var(--line); border:0; margin:0}
+
+/* ——— кнопки ——— */
+.btn{
+  display:flex; align-items:center; justify-content:center; gap:9px;
+  min-height:52px; padding:0 22px; width:100%;
+  font-family:var(--sans); font-size:16px; font-weight:600; line-height:1;
+  border:1px solid var(--lime); border-radius:2px; background:var(--lime); color:#0a0c06;
+  text-decoration:none; cursor:pointer; transition:transform .16s var(--ease), background .2s, color .2s;
+}
+.btn.ghost{background:transparent; color:var(--paper); border-color:rgba(243,240,232,.33)}
+.btn:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){
+  .btn:hover{background:#dbff3a}
+  .btn.ghost:hover{border-color:var(--paper); background:rgba(243,240,232,.07)}
+}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid var(--lime); outline-offset:3px
+}
+.btns{display:grid; gap:10px}
+@media(min-width:560px){ .btn{width:auto} .btns{display:flex; flex-wrap:wrap} }
+
+/* ——— шапка ——— */
+header{
+  position:sticky; top:0; z-index:40; background:rgba(7,8,10,.82);
+  backdrop-filter:blur(14px) saturate(140%); border-bottom:1px solid var(--line);
+}
+.bar{display:flex; align-items:center; gap:12px; min-height:56px}
+.mark{font-family:var(--serif); font-size:17px; letter-spacing:.26em; padding-left:.26em}
+.bar .st{margin-left:auto; min-width:0; font-size:13px}
+.bar .call{
+  display:flex; align-items:center; justify-content:center; width:44px; height:44px; flex:none;
+  border-radius:50%; text-decoration:none;
+}
+.bar .call svg{width:19px; height:19px; fill:var(--lime)}
+
+/* живой статус */
+.st{display:inline-flex; align-items:center; gap:8px; font-size:13.5px; color:#c4c7c1; white-space:nowrap}
+.st b{font-weight:600; color:var(--paper)}
+.dot{width:7px; height:7px; border-radius:50%; background:var(--mute); flex:none}
+.st.open .dot{background:var(--lime); box-shadow:0 0 0 0 rgba(201,243,29,.6); animation:pulse 2.6s infinite}
+.st.shut .dot{background:var(--red)}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(201,243,29,0)}100%{box-shadow:0 0 0 0 rgba(201,243,29,0)}}
+
+/* ——— первый экран ——— */
+.hero{position:relative; min-height:92svh; display:flex; align-items:flex-end; overflow:hidden}
+.hero-img{position:absolute; inset:0}
+.hero-img img{width:100%; height:100%; object-fit:cover; object-position:50% 70%}
+.hero-img::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(180deg,rgba(7,8,10,.70) 0%,rgba(7,8,10,.10) 30%,rgba(7,8,10,.05) 52%,
+    rgba(7,8,10,.80) 64%,rgba(7,8,10,.97) 78%,var(--void) 100%);
+}
+.hero .wrap{position:relative; z-index:2; padding-block:24px 34px; width:100%}
+@media(min-width:900px){
+  .hero-img::after{
+    background:
+      linear-gradient(90deg,rgba(7,8,10,.86) 0%,rgba(7,8,10,.55) 38%,rgba(7,8,10,0) 62%),
+      linear-gradient(180deg,rgba(7,8,10,.55) 0%,rgba(7,8,10,0) 28%,rgba(7,8,10,.35) 70%,var(--void) 100%);
+  }
+  .hero h1{max-width:11ch}
+}
+.hero h1{
+  font-size:clamp(34px,9.6vw,78px); margin:0 0 12px; max-width:14ch;
+  text-shadow:0 2px 26px rgba(0,0,0,.9),0 1px 60px rgba(0,0,0,.6);
+}
+.hero h1 em{font-style:italic; color:var(--lime)}
+.hero .lead{margin-bottom:18px; font-size:clamp(15.5px,4vw,19px); color:#dcdcd6;
+  text-shadow:0 1px 14px rgba(0,0,0,.95)}
+.hero .more{
+  display:inline-block; margin-top:14px; font-size:15px; color:#dcdcd6; text-decoration:none;
+  border-bottom:1px solid rgba(243,240,232,.4); padding:13px 0 9px;
+}
+@media (hover:hover) and (pointer:fine){ .hero .more:hover{color:var(--lime); border-color:var(--lime)} }
+
+/* кнопки геймпада с их вывески */
+.pads{display:flex; gap:12px; margin:0 0 18px; padding:0; list-style:none; perspective:520px}
+.pad{
+  width:34px; height:34px; display:grid; place-items:center; flex:none;
+  border:1.5px solid currentColor; border-radius:50%;
+  transform-style:preserve-3d; animation:float 6s var(--ease) infinite;
+}
+.pad svg{width:15px; height:15px; fill:none; stroke:currentColor; stroke-width:2.1}
+.pad:nth-child(1){color:#ff6ec7; animation-delay:0s}
+.pad:nth-child(2){color:var(--blue); animation-delay:.5s}
+.pad:nth-child(3){color:var(--red); animation-delay:1s}
+.pad:nth-child(4){color:var(--lime); animation-delay:1.5s}
+@keyframes float{0%,100%{transform:rotateY(0) translateZ(0)}50%{transform:rotateY(180deg) translateZ(18px)}}
+
+/* ——— полоса фактов ——— */
+.facts{border-block:1px solid var(--line); background:var(--void2)}
+.facts ul{list-style:none; margin:0; padding:18px 0; display:grid; gap:12px 26px; grid-template-columns:repeat(2,1fr)}
+.facts li{font-size:14px; color:#c4c7c1; display:flex; gap:9px; align-items:baseline}
+.facts li b{font-family:var(--serif); font-size:21px; font-weight:400; color:var(--paper);
+  flex:none; white-space:nowrap}
+@media(min-width:720px){ .facts ul{grid-template-columns:repeat(4,1fr)} }
+
+/* ——— кальян в объёме ——— */
+.smoke-sec{background:radial-gradient(120% 80% at 50% 0%,#12160f 0%,var(--void) 62%)}
+.rig{display:grid; gap:30px}
+@media(min-width:900px){ .rig{grid-template-columns:1fr 1fr; align-items:center; gap:56px} }
+.stage{
+  position:relative; aspect-ratio:1/1.12; border:1px solid var(--line); border-radius:3px;
+  background:
+    radial-gradient(62% 42% at 44% 92%,rgba(201,243,29,.20),transparent 72%),
+    radial-gradient(70% 48% at 86% 30%,rgba(255,32,56,.17),transparent 72%),
+    radial-gradient(52% 34% at 50% 6%,rgba(58,109,255,.13),transparent 74%),
+    linear-gradient(180deg,#0a0c10,#05060a);
+  overflow:hidden; touch-action:pan-y; cursor:grab;
+}
+.stage:active{cursor:grabbing}
+.stage canvas{position:absolute; inset:0; width:100%; height:100%; display:block}
+.stage .hint{
+  position:absolute; left:14px; bottom:12px; margin:0; z-index:2; max-width:9em;
+  font-size:11.5px; line-height:1.3; letter-spacing:.12em; text-transform:uppercase;
+  color:rgba(243,240,232,.38); pointer-events:none; transition:opacity .4s
+}
+.stage.touched .hint{opacity:0}
+.stage .fallback{
+  position:absolute; inset:0; display:grid; place-content:center; text-align:center;
+  padding:24px; color:var(--mute); font-size:14px
+}
+.stage.live .fallback{display:none}
+.parts{list-style:none; margin:22px 0 0; padding:0; display:grid; gap:0}
+.parts li{display:grid; grid-template-columns:auto 1fr; gap:14px; padding:13px 0; border-top:1px solid var(--line); align-items:baseline}
+.parts li:last-child{border-bottom:1px solid var(--line)}
+.parts b{font-family:var(--serif); font-size:13px; color:var(--lime); letter-spacing:.1em; text-transform:uppercase; font-weight:400}
+.parts span{font-size:15.5px; color:#c4c7c1}
+
+/* ——— полка игр ——— */
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 28px; padding:0; list-style:none}
+.chip{
+  min-height:44px; padding:0 17px; display:inline-flex; align-items:center;
+  border:1px solid rgba(243,240,232,.24); border-radius:999px; background:transparent;
+  color:#c4c7c1; font-family:var(--sans); font-size:15px; font-weight:500; cursor:pointer;
+  transition:transform .16s var(--ease), border-color .2s, color .2s, background .2s;
+}
+.chip[aria-pressed="true"]{background:var(--lime); border-color:var(--lime); color:#0a0c06; font-weight:600}
+.chip:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){ .chip:hover{border-color:var(--paper); color:var(--paper)} .chip[aria-pressed="true"]:hover{color:#0a0c06} }
+
+.shelf{list-style:none; margin:0; padding:0; display:grid; gap:18px 14px; grid-template-columns:repeat(2,1fr); perspective:1400px}
+@media(min-width:620px){ .shelf{grid-template-columns:repeat(3,1fr); gap:26px 20px} }
+@media(min-width:980px){ .shelf{grid-template-columns:repeat(5,1fr)} }
+.game{transform-style:preserve-3d}
+.game.gone{display:none}
+.case{
+  position:relative; width:100%; aspect-ratio:135/170; transform-style:preserve-3d;
+  transform:rotateY(-27deg); transition:transform .55s var(--ease);
+  background:none; border:0; padding:0; cursor:pointer; display:block; font:inherit; color:inherit;
+}
+.game.face .case{transform:rotateY(0deg)}
+@media (hover:hover) and (pointer:fine){ .case:hover{transform:rotateY(-6deg)} }
+.case .front,.case .spine{position:absolute; inset:0; border-radius:3px 5px 5px 3px; backface-visibility:hidden}
+.case .front{
+  padding:11px 10px 10px 15px; display:flex; flex-direction:column; justify-content:space-between;
+  box-shadow:inset 3px 0 0 rgba(0,0,0,.45), 0 16px 30px -18px #000;
+  background-image:linear-gradient(115deg,rgba(255,255,255,.16),rgba(0,0,0,.42));
+}
+.case .spine{
+  width:15px; left:-15px; transform-origin:right center; transform:rotateY(78deg);
+  filter:brightness(.55);
+}
+.case .ps{font-size:9.5px; letter-spacing:.16em; font-weight:700; opacity:.92}
+.case .nm{font-family:var(--serif); font-size:15.5px; line-height:1.07; text-align:left; text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.case .age{
+  align-self:flex-start; font-size:10px; font-weight:700; letter-spacing:.04em;
+  background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.4); border-radius:2px; padding:2px 5px;
+}
+.game figcaption{margin-top:10px; font-size:13px; color:var(--mute); display:flex; gap:7px; flex-wrap:wrap}
+.game figcaption b{color:#c4c7c1; font-weight:500}
+.count{margin:22px 0 0; font-size:14px; color:var(--mute)}
+
+/* ——— неоновая стена ——— */
+.neon-sec{background:var(--void2); border-block:1px solid var(--line)}
+.wall{list-style:none; margin:0; padding:0; display:grid; gap:10px; grid-template-columns:repeat(2,1fr)}
+@media(min-width:760px){ .wall{grid-template-columns:repeat(4,1fr); gap:14px} }
+.wall li{
+  display:grid; place-content:center; text-align:center; min-height:104px; padding:16px 12px;
+  border:1px solid rgba(243,240,232,.08); border-radius:3px;
+  background:linear-gradient(180deg,#0b0d10,#07080a);
+  font-size:15px; font-weight:400; line-height:1.25;
+}
+.wall li span{display:block; color:#fff}
+.n-w span{text-shadow:0 0 5px #fff,0 0 16px rgba(255,255,255,.75),0 0 34px rgba(255,255,255,.4)}
+.n-r span{color:#ffd9de; text-shadow:0 0 5px #ff2038,0 0 17px rgba(255,32,56,.85),0 0 38px rgba(255,32,56,.5)}
+.n-b span{color:#dbe6ff; text-shadow:0 0 5px #3a6dff,0 0 17px rgba(58,109,255,.85),0 0 38px rgba(58,109,255,.5)}
+.n-a span{color:#ffe7cd; text-shadow:0 0 5px #ff8a1e,0 0 17px rgba(255,138,30,.85),0 0 38px rgba(255,138,30,.5)}
+.n-l span{color:#f0ffd0; text-shadow:0 0 5px #c9f31d,0 0 17px rgba(201,243,29,.8),0 0 38px rgba(201,243,29,.45)}
+.wall li.big{grid-column:span 2; min-height:132px; font-size:19px}
+.flick span{animation:flick 7s steps(1) infinite}
+@keyframes flick{0%,96%,100%{opacity:1}97%{opacity:.35}98%{opacity:1}98.6%{opacity:.5}}
+.shots{display:grid; gap:10px; grid-template-columns:repeat(2,1fr); margin-top:14px}
+@media(min-width:760px){ .shots{grid-template-columns:repeat(4,1fr); gap:14px} }
+.shots img{border-radius:3px; aspect-ratio:1/1; object-fit:cover; width:100%}
+
+/* ——— залы ——— */
+.rooms{list-style:none; margin:0; padding:0; display:grid; gap:26px}
+@media(min-width:800px){ .rooms{grid-template-columns:repeat(3,1fr); gap:22px} }
+.room img{border-radius:3px; aspect-ratio:4/3; object-fit:cover; width:100%}
+.room h3{font-size:24px; margin:16px 0 7px}
+.room p{font-size:15.5px; color:#c4c7c1; margin:0}
+
+/* ——— бронь ——— */
+.book-sec{background:radial-gradient(110% 70% at 18% 0%,#14100c 0%,var(--void) 60%)}
+.form{display:grid; gap:20px; max-width:620px}
+.field{display:grid; gap:9px}
+.field>label,.legend{font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--lime); font-weight:600}
+fieldset{border:0; margin:0; padding:0; display:grid; gap:9px}
+input[type="date"],select{
+  width:100%; min-height:52px; padding:0 14px; font:inherit; font-size:16px; color:var(--paper);
+  background:var(--ash); border:1px solid rgba(243,240,232,.2); border-radius:2px; appearance:none;
+}
+input[type="date"]{color-scheme:dark}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--lime) 50%),linear-gradient(135deg,var(--lime) 50%,transparent 50%);
+  background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px; background-size:6px 6px; background-repeat:no-repeat}
+.slots{display:flex; flex-wrap:wrap; gap:7px}
+.slot{
+  min-height:44px; min-width:70px; padding:0 13px; display:inline-flex; align-items:center; justify-content:center;
+  background:var(--ash); border:1px solid rgba(243,240,232,.18); border-radius:2px;
+  color:#c4c7c1; font:inherit; font-size:15.5px; font-variant-numeric:tabular-nums; cursor:pointer;
+  transition:transform .16s var(--ease), border-color .2s, background .2s, color .2s;
+}
+.slot[aria-pressed="true"]{background:var(--lime); border-color:var(--lime); color:#0a0c06; font-weight:600}
+.slot:active{transform:scale(.96)}
+.slot.night::after{content:'ночь'; margin-left:7px; font-size:10px; letter-spacing:.1em; text-transform:uppercase; opacity:.6}
+.recap{
+  border:1px solid var(--line); border-left:2px solid var(--lime); border-radius:2px;
+  padding:16px 18px; background:rgba(22,24,29,.6); font-size:15.5px; line-height:1.5; white-space:pre-line;
+}
+.recap b{font-weight:600}
+.note{font-size:13.5px; color:var(--mute); margin:0}
+.copied{color:var(--lime)}
+
+/* ——— отзывы ——— */
+.revs{list-style:none; margin:0; padding:0; display:grid; gap:2px}
+@media(min-width:840px){ .revs{grid-template-columns:repeat(2,1fr); gap:2px} }
+.revs li{background:var(--void2); padding:24px 22px; border:1px solid var(--line)}
+.revs blockquote{margin:0 0 14px; font-family:var(--serif); font-size:18px; line-height:1.38}
+.revs .who{font-size:13.5px; color:var(--mute); display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+.revs .stars{color:var(--lime); letter-spacing:.12em; font-size:12px}
+.score{display:flex; align-items:baseline; gap:14px; margin-bottom:28px; flex-wrap:wrap}
+.score .n{font-family:var(--serif); font-size:64px; line-height:.86; color:var(--lime)}
+.score .t{font-size:14.5px; color:var(--mute); max-width:24ch}
+
+/* ——— дорога ——— */
+.way{display:grid; gap:28px}
+@media(min-width:900px){ .way{grid-template-columns:1fr 1.1fr; gap:48px; align-items:start} }
+.steps{list-style:none; margin:0 0 26px; padding:0; counter-reset:s}
+.steps li{
+  counter-increment:s; position:relative; padding:0 0 22px 46px; font-size:16px; color:#c4c7c1;
+}
+.steps li::before{
+  content:counter(s); position:absolute; left:0; top:-2px; width:30px; height:30px;
+  display:grid; place-items:center; border:1px solid var(--lime); border-radius:50%;
+  font-family:var(--serif); font-size:14px; color:var(--lime);
+}
+.steps li::after{content:''; position:absolute; left:15px; top:32px; bottom:4px; width:1px; background:var(--line)}
+.steps li:last-child{padding-bottom:0}
+.steps li:last-child::after{display:none}
+.steps b{color:var(--paper); font-weight:600}
+.map{border:1px solid var(--line); border-radius:3px; overflow:hidden; background:var(--ash)}
+.map iframe{display:block; width:100%; height:330px; border:0;
+  filter:invert(.92) hue-rotate(180deg) saturate(.72) brightness(1.06) contrast(.92)}
+.warn{
+  margin-top:22px; padding:16px 18px; border:1px solid rgba(255,138,30,.35); border-radius:2px;
+  background:rgba(255,138,30,.07); font-size:15px; color:#e8ddcf;
+}
+.warn b{color:var(--amber); font-weight:600}
+
+/* ——— подвал ——— */
+footer{background:var(--void2); border-top:1px solid var(--line); padding-block:44px 30px}
+.fgrid{display:grid; gap:26px}
+@media(min-width:760px){ .fgrid{grid-template-columns:1.2fr 1fr 1fr} }
+footer h4{font-family:var(--serif); font-weight:400; font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:var(--lime); margin:0 0 12px}
+footer ul{list-style:none; margin:0; padding:0; display:grid; gap:2px; font-size:15px; color:#c4c7c1}
+footer li{display:flex; align-items:center}
+footer a{display:inline-block; text-decoration:none; padding:11px 0 9px;
+  border-bottom:1px solid rgba(243,240,232,.22)}
+@media (hover:hover) and (pointer:fine){ footer a:hover{border-color:var(--lime); color:var(--lime)} }
+.fmark{font-family:var(--serif); font-size:23px; letter-spacing:.28em; margin:0 0 6px; padding-left:.28em}
+.sign{margin-top:34px; padding-top:20px; border-top:1px solid var(--line); font-size:12.5px; color:#5f635e; line-height:1.6}
+
+.reveal{opacity:0; transform:translateY(22px); transition:opacity .7s var(--ease), transform .7s var(--ease)}
+.reveal.in{opacity:1; transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important; transition:none!important}
+  .reveal{opacity:1; transform:none}
+  .case{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <span class="mark">BROTHERS</span>
+    <span class="st" id="st-top"><span class="dot"></span><span class="txt">часы работы</span></span>
+    <a class="call" href="tel:+79874521666" aria-label="Позвонить в бар">
+      <svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z"/></svg>
+    </a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-img">
+    <img src="img/vyveska.jpg" alt="Неоновая вывеска Brothers Lounge над входом на Молодогвардейской" width="960" height="1280" fetchpriority="high">
+  </div>
+  <div class="wrap">
+    <h1>Спуститесь вниз<br>по <em>лестнице</em></h1>
+    <p class="lead">Кальян-бар в центре Самары. Молодогвардейская, 90, цокольный этаж.</p>
+    <div class="btns">
+      <a class="btn" href="#bron">Забронировать стол</a>
+    </div>
+  </div>
+</div>
+
+<div class="facts">
+  <div class="wrap">
+    <ul>
+      <li><b>5,0</b> <span>из 47 оценок на Картах</span></li>
+      <li><b>27</b> <span>отзывов, все пятёрки</span></li>
+      <li><b>9</b> <span>дисков на полке у приставки</span></li>
+      <li><b>18:00</b> <span>каждый день, в пт и сб до 02:00</span></li>
+    </ul>
+  </div>
+</div>
+
+<section id="kalyan" class="smoke-sec">
+  <div class="wrap rig">
+    <div>
+      <p class="eyebrow">Ради чего сюда идут</p>
+      <h2 style="font-size:clamp(31px,8vw,52px); margin-bottom:18px">Кальян, который<br>курится весь вечер</h2>
+      <p class="lead">В отзывах про табак пишут коротко: «только ТОПы». Про мастера — что он ещё и юморист. Про сам кальян — что вкус чувствуется и не горчит до самого конца.</p>
+      <ul class="parts">
+        <li><b>Чаша</b><span>«Кальян сделали как надо: вкус чувствуется, не горчит и спокойно курится весь вечер» — Евгений</span></li>
+        <li><b>Табак</b><span>«Ассортимент кальянов впечатляет, только ТОПы» — Вадим</span></li>
+        <li><b>Мастер</b><span>«Кальянщик данного заведения ещё и настоящий юморист! Гриша, спасибо за тик-токи!» — Вадим Ферсович</span></li>
+      </ul>
+    </div>
+    <div class="stage" id="stage">
+      <canvas id="gl" aria-label="Кальян в объёме, можно повернуть пальцем"></canvas>
+      <p class="fallback">Здесь крутится кальян в объёме.<br>Браузер не дал WebGL.</p>
+      <p class="hint">Потяните, чтобы повернуть</p>
+    </div>
+  </div>
+</section>
+
+<section id="igry">
+  <div class="wrap">
+    <ul class="pads" aria-hidden="true">
+      <li class="pad"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/></svg></li>
+      <li class="pad"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></li>
+      <li class="pad"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/></svg></li>
+      <li class="pad"><svg viewBox="0 0 24 24"><path d="M12 5l7 13H5z"/></svg></li>
+    </ul>
+    <p class="eyebrow">Плойка</p>
+    <h2 style="font-size:clamp(31px,8vw,52px); margin-bottom:16px">Девять дисков<br>и один геймпад</h2>
+    <p class="lead" style="margin-bottom:26px">«Есть плойка, что очень важно, можно просто зайти и поиграть» — из отзыва. Полка снята с их же фотографии: PS4 и PS5, ничего не добавлено.</p>
+    <ul class="chips" role="group" aria-label="Сколько нас">
+      <li><button class="chip" type="button" data-pl="0" aria-pressed="true">Все девять</button></li>
+      <li><button class="chip" type="button" data-pl="2" aria-pressed="false">Вдвоём</button></li>
+      <li><button class="chip" type="button" data-pl="1" aria-pressed="false">Одному</button></li>
+    </ul>
+    <ul class="shelf" id="shelf"></ul>
+    <p class="count" id="shelf-count"></p>
+  </div>
+</section>
+
+<section id="neon" class="neon-sec">
+  <div class="wrap">
+    <p class="eyebrow">Что светится на стенах</p>
+    <h2 style="font-size:clamp(31px,8vw,52px); margin-bottom:16px">«Неон угарный»</h2>
+    <p class="lead" style="margin-bottom:26px">Это не наша выдумка и не подпись под картинкой, а цитата из отзыва Данилы. Вот что у вас висит.</p>
+    <ul class="wall">
+      <li class="n-w flick"><span>Дымно<br>и точка</span></li>
+      <li class="n-a"><span>Кусь<br>за Русь</span></li>
+      <li class="n-w big"><span>Юра, мы всё скурили!</span></li>
+      <li class="n-r"><span>Делай,<br>родной!</span></li>
+      <li class="n-r"><span>Это Бразерс,<br>детка!</span></li>
+      <li class="n-b big"><span>Че там? Где там?</span></li>
+      <li class="n-l"><span>#сказочное<br>Бали</span></li>
+      <li class="n-r"><span>Not Suka<br>Place</span></li>
+      <li class="n-w big flick"><span>Алло, Галочка, ты щас курнёшь!</span></li>
+    </ul>
+    <div class="shots">
+      <img src="img/dymno.jpg" alt="Неоновая надпись «Дымно и точка» на рифлёной стене" width="960" height="1280" loading="lazy">
+      <img src="img/yura.jpg" alt="Неоновая надпись «Юра, мы всё скурили»" width="1280" height="792" loading="lazy">
+      <img src="img/galochka.jpg" alt="Неоновые надписи «Алло, Галочка, ты щас курнёшь» и «Че там? Где там?»" width="960" height="1280" loading="lazy">
+      <img src="img/warner.jpg" alt="Неоновый щит Warner Brazzers и череп барана" width="960" height="1280" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="zaly">
+  <div class="wrap">
+    <p class="eyebrow">Где сесть</p>
+    <h2 style="font-size:clamp(31px,8vw,52px); margin-bottom:28px">Три разных места<br>под одним потолком</h2>
+    <ul class="rooms">
+      <li class="room">
+        <img src="img/zal.jpg" alt="Общий зал: кресла, столы, неон по стенам" width="1177" height="960" loading="lazy">
+        <h3>Общий зал</h3>
+        <p>Кресла и диваны вдоль стен, неон по кругу. «Музыка не мешает разговаривать» — так про него пишут в отзывах.</p>
+      </li>
+      <li class="room">
+        <img src="img/vip.jpg" alt="Отдельная комната с кожаным диваном и неоновой надписью Not Suka Place" width="1280" height="960" loading="lazy">
+        <h3>VIP-комната</h3>
+        <p>Отдельная комната за аркой, кожаный диван, своя подсветка. На неоне у входа написано «Not Suka Place».</p>
+      </li>
+      <li class="room">
+        <img src="img/pristavka.jpg" alt="Геймпад PlayStation и стопка дисков на столе" width="1280" height="730" loading="lazy">
+        <h3>Стол у приставки</h3>
+        <p>Тот самый, ради которого пишут «можно просто зайти и поиграть». Геймпад, экран и полка с девятью дисками.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="bron" class="book-sec">
+  <div class="wrap">
+    <p class="eyebrow">Бронь</p>
+    <h2 style="font-size:clamp(31px,8vw,52px); margin-bottom:16px">Выберите вечер</h2>
+    <p class="lead" style="margin-bottom:30px">Время подставляется по вашему расписанию: будни до полуночи, пятница и суббота до двух. Кнопка соберёт сообщение и откроет мессенджер, останется отправить.</p>
+    <form class="form" id="book" novalidate>
+      <div class="field">
+        <label for="d">Дата</label>
+        <input type="date" id="d" name="d">
+      </div>
+      <fieldset>
+        <span class="legend">Время</span>
+        <div class="slots" id="slots"></div>
+      </fieldset>
+      <div class="field">
+        <label for="g">Сколько гостей</label>
+        <select id="g" name="g">
+          <option value="2" selected>2 гостя</option>
+          <option value="1">1 гость</option>
+          <option value="3">3 гостя</option>
+          <option value="4">4 гостя</option>
+          <option value="5">5 гостей</option>
+          <option value="6">6 гостей</option>
+          <option value="8">7 и больше</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="r">Какое место</label>
+        <select id="r" name="r">
+          <option value="Общий зал" selected>Общий зал</option>
+          <option value="VIP-комната">VIP-комната</option>
+          <option value="Стол у приставки">Стол у приставки</option>
+        </select>
+      </div>
+      <p class="recap" id="recap"></p>
+      <div class="btns">
+        <button class="btn" type="button" id="tg">Скопировать и открыть Телеграм</button>
+        <a class="btn ghost" href="https://vk.ru/brotherssmr" target="_blank" rel="noopener">Написать во ВКонтакте</a>
+        <a class="btn ghost" href="tel:+79874521666">Позвонить</a>
+      </div>
+      <p class="note" id="note">Бронь подтверждает бар: это демонстрация того, как заявка может собираться на сайте.</p>
+    </form>
+  </div>
+</section>
+
+<section id="otzyvy" style="background:var(--void2); border-block:1px solid var(--line)">
+  <div class="wrap">
+    <p class="eyebrow">Отзывы на Яндекс Картах</p>
+    <div class="score">
+      <span class="n">5,0</span>
+      <span class="t">47 оценок и 27 отзывов, среди них ни одной оценки ниже пяти</span>
+    </div>
+    <ul class="revs">
+      <li>
+        <blockquote>«Зашли посидеть вечером, в итоге остались надолго. Атмосфера расслабленная, музыка не мешает разговаривать, персонал нормальный и без навязчивости»</blockquote>
+        <p class="who"><span class="stars">★★★★★</span><b>Евгений</b><span>3 сентября</span></p>
+      </li>
+      <li>
+        <blockquote>«Прикольное заведение, есть плойка, что очень важно, можно просто зайти и поиграть, очень приятный персонал, всё подскажут и помогут»</blockquote>
+        <p class="who"><span class="stars">★★★★★</span><b>qwerty123</b><span>11 мая</span></p>
+      </li>
+      <li>
+        <blockquote>«Офигенный кальян! Приятная атмосфера, очень заботливый и чуткий хозяин. Можно со своим алкоголем и едой по согласованию»</blockquote>
+        <p class="who"><span class="stars">★★★★★</span><b>Владимир Ларюхин</b><span>2 февраля 2025</span></p>
+      </li>
+      <li>
+        <blockquote>«Одна из лучших, если не лучшая, кальянка нашего города. Хороший ассортимент табака как по брендам, так и по вкусам. Есть Wi-Fi и VIP-комната»</blockquote>
+        <p class="who"><span class="stars">★★★★★</span><b>Вадим Константинопольский</b><span>28 ноября 2021</span></p>
+      </li>
+      <li>
+        <blockquote>«Всё супер! Вкусно, дымно, вкусно, молодёжно! Неон угарный)»</blockquote>
+        <p class="who"><span class="stars">★★★★★</span><b>Danila P.</b><span>7 ноября 2025</span></p>
+      </li>
+      <li>
+        <blockquote>«Самый лучший кальян, ну по крайней мере в историческом центре, сдесь»</blockquote>
+        <p class="who"><span class="stars">★★★★★</span><b>Ольга Шкурко</b><span>6 октября 2025</span></p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="kak">
+  <div class="wrap way">
+    <div>
+      <p class="eyebrow">Как попасть</p>
+      <h2 style="font-size:clamp(31px,8vw,52px); margin-bottom:26px">Молодогвардейская, 90</h2>
+      <ol class="steps">
+        <li>Идите по Молодогвардейской к дому <b>90</b>. Это исторический центр, старый дом с арками.</li>
+        <li><b>Не доходя до Yeti</b> увидите нашу вывеску: оранжевые буквы, кнопки геймпада и синее LOUNGE.</li>
+        <li><b>Спуститесь вниз по лестнице</b> — и вы у нас. Цокольный этаж.</li>
+      </ol>
+      <p class="warn"><b>Про парковку честно.</b> Знаки висят по обеим сторонам проезжей части, и в пересменку машину могут эвакуировать. Об этом писали в отзыве, и это правда стоит знать заранее.</p>
+    </div>
+    <div>
+      <div class="map">
+        <iframe src="https://yandex.ru/map-widget/v1/?oid=235514037613&amp;ol=biz&amp;ll=50.096617%2C53.187688&amp;z=17" title="Brothers Bar на карте Самары" loading="lazy" allowfullscreen></iframe>
+      </div>
+      <img src="img/fasad.jpg" alt="Дом на Молодогвардейской, 90 днём" width="1280" height="750" loading="lazy" style="margin-top:14px; border-radius:3px">
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <p class="fmark">BROTHERS</p>
+        <p class="dim" style="font-size:15px; margin:0">Кальян-бар в Самаре<br>Молодогвардейская, 90, цокольный этаж</p>
+        <p class="st" id="st-foot" style="margin-top:14px"><span class="dot"></span><span class="txt">часы работы</span></p>
+      </div>
+      <div>
+        <h4>Когда открыто</h4>
+        <ul>
+          <li>Пн, вт, ср, чт &nbsp; 18:00 – 00:00</li>
+          <li>Пт, сб &nbsp; 18:00 – 02:00</li>
+          <li>Вс &nbsp; 18:00 – 00:00</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Связь</h4>
+        <ul>
+          <li><a href="tel:+79874521666">+7 987 452-16-66</a></li>
+          <li><a href="https://t.me/BRAZZERSBAR" target="_blank" rel="noopener">Телеграм</a></li>
+          <li><a href="https://vk.ru/brotherssmr" target="_blank" rel="noopener">ВКонтакте</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="sign">Курение вредит вашему здоровью. Вход и обслуживание — лицам старше 18 лет.<br>
+    Фотографии и тексты отзывов взяты с карточки заведения на Яндекс Картах.<br>
+    Демо-макет. Разработка — студия Лендвис, lendvis.ru</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ——————— расписание: один источник правды ———————
+   Ключ — день недели по времени Самары, значение — [открытие, закрытие].
+   Закрытие больше 24 значит «ночью следующего дня». */
+var HOURS = {0:[18,24], 1:[18,24], 2:[18,24], 3:[18,24], 4:[18,24], 5:[18,26], 6:[18,26]};
+var DAYS = ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
+var MON = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+
+/* Время у бара, а не у того, кто смотрит: человек может открыть сайт из другого пояса. */
+function samara(){
+  var p = new Intl.DateTimeFormat('ru-RU',{timeZone:'Europe/Samara',weekday:'short',
+    hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit',year:'numeric',hour12:false})
+    .formatToParts(new Date());
+  var v = {};
+  p.forEach(function(x){ v[x.type] = x.value; });
+  var d = new Date(+v.year, +v.month - 1, +v.day, +v.hour, +v.minute);
+  return {date:d, day:d.getDay(), h:+v.hour + (+v.minute)/60};
+}
+function hhmm(x){
+  var h = Math.floor(x) % 24, m = Math.round((x - Math.floor(x)) * 60);
+  return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+}
+function state(){
+  var n = samara();
+  var yClose = HOURS[(n.day + 6) % 7][1] - 24;      // сколько ночи тянется вчерашний вечер
+  if (n.h < yClose) return {open:true, till:yClose};
+  if (n.h >= 18)    return {open:true, till:HOURS[n.day][1]};
+  var wait = (n.h < 18 ? 18 - n.h : 42 - n.h);
+  return {open:false, wait:wait};
+}
+function paintStatus(){
+  var s = state();
+  var txt = s.open
+    ? 'Открыто до ' + hhmm(s.till)
+    : (s.wait < 1 ? 'Откроемся через ' + Math.round(s.wait * 60) + ' мин'
+                  : 'Откроемся в 18:00');
+  [].forEach.call(document.querySelectorAll('.st'), function(el){
+    el.classList.toggle('open', s.open);
+    el.classList.toggle('shut', !s.open);
+    var short = el.id === 'st-top';
+    el.querySelector('.txt').innerHTML = s.open
+      ? (short ? '<b>Открыто</b> до ' + hhmm(s.till) : 'Сейчас <b>открыто</b> до ' + hhmm(s.till))
+      : (short ? '<b>Закрыто</b>' : '<b>Закрыто</b> · ' + txt.replace('Откроемся','откроемся'));
+  });
+}
+paintStatus();
+setInterval(paintStatus, 60000);
+
+/* ——————— полка игр ———————
+   Список снят с их собственных фотографий полки. Ничего не дописано. */
+var GAMES = [
+  {t:'It Takes Two',       ps:'PS4', pl:2, age:'12', g:'кооп',           c:'#d8452c'},
+  {t:'Split Fiction',      ps:'PS5', pl:2, age:'16', g:'кооп',           c:'#3b4bc4'},
+  {t:'Mortal Kombat 1',    ps:'PS5', pl:2, age:'18', g:'файтинг',        c:'#b87418'},
+  {t:'UFC 5',              ps:'PS5', pl:2, age:'16', g:'бои',            c:'#b81f2a'},
+  {t:'UFC 3',              ps:'PS4', pl:2, age:'18', g:'бои',            c:'#7d1a1f'},
+  {t:'EA Sports FC 26',    ps:'PS5', pl:2, age:'3',  g:'футбол',         c:'#0f7a42'},
+  {t:'Grand Theft Auto V', ps:'PS5', pl:1, age:'18', g:'открытый мир',   c:'#2a6146'},
+  {t:'Дожить до рассвета', ps:'PS4', pl:1, age:'18', g:'хоррор',         c:'#414750'},
+  {t:'The Quarry',         ps:'PS4', pl:1, age:'18', g:'хоррор',         c:'#5e1d28'}
+];
+var shelf = document.getElementById('shelf');
+var shelfCount = document.getElementById('shelf-count');
+GAMES.forEach(function(g, i){
+  var li = document.createElement('li');
+  li.className = 'game';
+  li.dataset.pl = g.pl;
+  li.innerHTML =
+    '<button class="case" type="button" style="color:#fff">' +
+      '<span class="spine" style="background:' + g.c + '"></span>' +
+      '<span class="front" style="background-color:' + g.c + '">' +
+        '<span class="ps">' + g.ps + '</span>' +
+        '<span class="nm">' + g.t + '</span>' +
+        '<span class="age">' + g.age + '+</span>' +
+      '</span>' +
+    '</button>' +
+    '<figcaption><b>' + g.g + '</b><span>' + (g.pl === 2 ? 'вдвоём' : 'одному') + '</span></figcaption>';
+  li.querySelector('.case').setAttribute('aria-label', g.t + ', ' + g.ps + ', ' + g.g);
+  li.querySelector('.case').addEventListener('click', function(){
+    li.classList.toggle('face');
+  });
+  shelf.appendChild(li);
+});
+function filterShelf(pl){
+  var n = 0;
+  [].forEach.call(shelf.children, function(li){
+    var show = !pl || +li.dataset.pl === pl;
+    li.classList.toggle('gone', !show);
+    if (show) n++;
+  });
+  shelfCount.textContent = n === GAMES.length
+    ? 'Все девять дисков, PS4 и PS5.'
+    : n + (n === 1 ? ' диск' : (n < 5 ? ' диска' : ' дисков')) + ' из девяти.';
+}
+[].forEach.call(document.querySelectorAll('.chip'), function(b){
+  b.addEventListener('click', function(){
+    [].forEach.call(document.querySelectorAll('.chip'), function(x){
+      x.setAttribute('aria-pressed', String(x === b));
+    });
+    filterShelf(+b.dataset.pl);
+  });
+});
+filterShelf(0);
+
+/* ——————— бронь: слоты растут из того же расписания ——————— */
+var dEl = document.getElementById('d');
+var slotsEl = document.getElementById('slots');
+var recap = document.getElementById('recap');
+var noteEl = document.getElementById('note');
+var noteBase = noteEl.textContent;
+var chosen = null;
+
+var today = samara().date;
+function iso(d){
+  return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+}
+dEl.value = iso(today);
+dEl.min = iso(today);
+var max = new Date(today.getTime()); max.setDate(max.getDate() + 60);
+dEl.max = iso(max);
+
+function pickedDate(){
+  var p = dEl.value.split('-');
+  return new Date(+p[0], +p[1] - 1, +p[2]);
+}
+function buildSlots(){
+  var d = pickedDate();
+  if (isNaN(d)) return;
+  var close = HOURS[d.getDay()][1];
+  var now = samara();
+  var isToday = iso(d) === iso(now.date);
+  slotsEl.innerHTML = '';
+  chosen = null;
+  var made = 0;
+  for (var t = 18; t <= close - 1.5; t += 0.5) {
+    if (isToday && t < now.h + 0.5) continue;      // прошедшее время не предлагаем
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'slot' + (t >= 24 ? ' night' : '');
+    b.textContent = hhmm(t);
+    b.setAttribute('aria-pressed', 'false');
+    b.dataset.t = String(t);
+    slotsEl.appendChild(b);
+    made++;
+  }
+  if (!made) {
+    var p = document.createElement('p');
+    p.className = 'note';
+    p.textContent = 'На сегодня время уже вышло. Выберите завтра.';
+    slotsEl.appendChild(p);
+  } else {
+    slotsEl.firstChild.setAttribute('aria-pressed', 'true');
+    chosen = slotsEl.firstChild.dataset.t;
+  }
+  paintRecap();
+}
+slotsEl.addEventListener('click', function(e){
+  var b = e.target.closest('.slot');
+  if (!b) return;
+  [].forEach.call(slotsEl.querySelectorAll('.slot'), function(x){
+    x.setAttribute('aria-pressed', String(x === b));
+  });
+  chosen = b.dataset.t;
+  paintRecap();
+});
+function guestWord(n){
+  return n === 1 ? '1 гость' : (n < 5 ? n + ' гостя' : (n === 8 ? '7 и больше гостей' : n + ' гостей'));
+}
+function message(){
+  var d = pickedDate();
+  var when = DAYS[d.getDay()] + ', ' + d.getDate() + ' ' + MON[d.getMonth()];
+  var t = chosen ? hhmm(+chosen) : '—';
+  return 'Здравствуйте! Хочу забронировать стол в Brothers.\n' +
+         'Когда: ' + when + ', ' + t + '\n' +
+         'Сколько нас: ' + guestWord(+document.getElementById('g').value) + '\n' +
+         'Место: ' + document.getElementById('r').value;
+}
+function paintRecap(){
+  if (!chosen) { recap.textContent = 'Выберите время.'; return; }
+  var d = pickedDate();
+  var t = +chosen;
+  recap.innerHTML = '<b>' + DAYS[d.getDay()] + ', ' + d.getDate() + ' ' + MON[d.getMonth()] +
+    ', ' + hhmm(t) + '</b>\n' + guestWord(+document.getElementById('g').value) +
+    ', ' + document.getElementById('r').value.toLowerCase() +
+    (t >= 24 ? '\nЭто уже ночь ' + DAYS[(d.getDay() + 1) % 7] + ': в этот день работаем до ' + hhmm(HOURS[d.getDay()][1]) + '.' : '');
+}
+dEl.addEventListener('change', buildSlots);
+document.getElementById('g').addEventListener('change', paintRecap);
+document.getElementById('r').addEventListener('change', paintRecap);
+buildSlots();
+
+document.getElementById('tg').addEventListener('click', function(){
+  var text = message();
+  var go = function(){ window.open('https://t.me/BRAZZERSBAR', '_blank', 'noopener'); };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function(){
+      noteEl.innerHTML = '<span class="copied">Сообщение в буфере обмена.</span> Вставьте его в чат и отправьте.';
+      go();
+    }).catch(show);
+  } else { show(); }
+  function show(){
+    noteEl.textContent = noteBase;
+    recap.textContent = text;
+    go();
+  }
+});
+
+/* ——————— проявление на прокрутке ——————— */
+if (!RM && 'IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {rootMargin:'0px 0px -12% 0px'});
+  [].forEach.call(document.querySelectorAll('section .wrap > *, .room, .revs li'), function(el){
+    el.classList.add('reveal'); io.observe(el);
+  });
+}
+})();
+</script>
+
+<script>
+/* ——————— кальян в объёме ———————
+   Один фрагментный шейдер: тело вращения размечено расстоянием, шланг собран
+   из отрезков. Библиотеку не берём — весь объект дешевле, чем её загрузка. */
+(function(){
+'use strict';
+var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var stage = document.getElementById('stage');
+var cv = document.getElementById('gl');
+var gl = cv.getContext('webgl', {antialias:false, alpha:true, depth:false, powerPreference:'low-power'})
+      || cv.getContext('experimental-webgl', {antialias:false, alpha:true, depth:false});
+if (!gl) return;
+
+var VS = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+
+var FS = [
+'precision highp float;',
+'uniform vec2 R; uniform float T; uniform vec2 M; uniform float S;',
+'mat2 rt(float a){float s=sin(a),c=cos(a);return mat2(c,-s,s,c);}',
+'float sg2(vec2 p,vec2 a,vec2 b,float r){vec2 pa=p-a,ba=b-a;float h=clamp(dot(pa,ba)/dot(ba,ba),0.,1.);return length(pa-ba*h)-r;}',
+'float cn2(vec2 p,vec2 a,vec2 b,float r1,float r2){vec2 pa=p-a,ba=b-a;float h=clamp(dot(pa,ba)/dot(ba,ba),0.,1.);return length(pa-ba*h)-mix(r1,r2,h);}',
+'float bx2(vec2 p,vec2 b,float r){vec2 d=abs(p)-b;return length(max(d,0.))+min(max(d.x,d.y),0.)-r;}',
+'float sg3(vec3 p,vec3 a,vec3 b,float r){vec3 pa=p-a,ba=b-a;float h=clamp(dot(pa,ba)/dot(ba,ba),0.,1.);return length(pa-ba*h)-r;}',
+'float smin(float a,float b,float k){float h=clamp(.5+.5*(b-a)/k,0.,1.);return mix(b,a,h)-k*h*(1.-h);}',
+
+'vec2 map(vec3 p){',
+'  vec2 q=vec2(length(p.xz),p.y);',
+'  float flask=length(vec2(q.x,(q.y+.58)*1.12))-.40;',           // колба
+'  float neck=cn2(q,vec2(0.,-.34),vec2(0.,-.02),.19,.072);',     // горло
+'  float glass=smin(flask,neck,.09);',
+'  float stem=sg2(q,vec2(0.,-.06),vec2(0.,.64),.046);',          // шахта
+'  float knob=length(q-vec2(0.,.15))-.082;',
+'  float plate=bx2(q-vec2(0.,.30),vec2(.25,.012),.016);',        // тарелка
+'  float mtl=min(min(stem,knob),plate);',
+'  float bowl=cn2(q,vec2(0.,.64),vec2(0.,.84),.062,.158);',      // чаша
+'  float kal=bx2(q-vec2(0.,.915),vec2(.104,.050),.018);',        // калауд
+'  mtl=min(mtl,smin(bowl,kal,.03));',
+'  float hose=sg3(p,vec3(.05,.50,0.),vec3(.30,.53,.10),.034);',   // шланг свисает над тарелкой
+'  hose=smin(hose,sg3(p,vec3(.30,.53,.10),vec3(.52,.30,.17),.034),.07);',
+'  hose=smin(hose,sg3(p,vec3(.52,.30,.17),vec3(.58,-.05,.15),.034),.07);',
+'  hose=smin(hose,sg3(p,vec3(.58,-.05,.15),vec3(.46,-.40,.07),.034),.07);',
+'  hose=smin(hose,sg3(p,vec3(.46,-.40,.07),vec3(.37,-.56,.01),.049),.05);',
+'  vec2 r=vec2(glass,0.);',
+'  if(mtl<r.x) r=vec2(mtl,1.);',
+'  if(hose<r.x) r=vec2(hose,2.);',
+'  return r;',
+'}',
+
+'vec3 nrm(vec3 p){vec2 e=vec2(1.,-1.)*.0014;',
+' return normalize(e.xyy*map(p+e.xyy).x+e.yyx*map(p+e.yyx).x+e.yxy*map(p+e.yxy).x+e.xxx*map(p+e.xxx).x);}',
+
+'float hs(vec3 p){p=fract(p*.3183099+vec3(.11,.17,.13));p*=17.0;return fract(p.x*p.y*p.z*(p.x+p.y+p.z));}',
+'float vn(vec3 x){vec3 i=floor(x),f=fract(x);f=f*f*(3.-2.*f);',
+' return mix(mix(mix(hs(i),hs(i+vec3(1,0,0)),f.x),mix(hs(i+vec3(0,1,0)),hs(i+vec3(1,1,0)),f.x),f.y),',
+'            mix(mix(hs(i+vec3(0,0,1)),hs(i+vec3(1,0,1)),f.x),mix(hs(i+vec3(0,1,1)),hs(i+vec3(1,1,1)),f.x),f.y),f.z);}',
+
+'void main(){',
+'  vec2 uv=(gl_FragCoord.xy*2.-R)/R.y;',
+'  vec3 ro=vec3(0.,.28,3.3);',
+'  vec3 rd=normalize(vec3(uv,-2.3));',
+'  ro.yz*=rt(M.y); rd.yz*=rt(M.y);',
+'  ro.xz*=rt(M.x); rd.xz*=rt(M.x);',
+'  float t=.4; vec2 h=vec2(1.,0.); bool hit=false;',
+'  for(int i=0;i<76;i++){',
+'    h=map(ro+rd*t);',
+'    if(h.x<.0016*t){hit=true;break;}',
+'    t+=h.x*.86;',
+'    if(t>7.) break;',
+'  }',
+'  vec3 col=vec3(0.); float a=0.;',
+'  if(hit){',
+'    vec3 p=ro+rd*t, n=nrm(p), v=-rd;',
+'    vec3 base=h.y<.5?vec3(.052,.054,.058):(h.y<1.5?vec3(.30,.32,.34):vec3(.070,.060,.070));',
+'    if(h.y<.5&&p.y<-.46) base=vec3(.085,.135,.030);',
+'    float sp=h.y<1.5?58.:11.;',
+'    vec3 L1=normalize(vec3(-.55,.75,.60)), C1=vec3(.79,.95,.11);',
+'    vec3 L2=normalize(vec3(.80,.16,.42)), C2=vec3(1.,.13,.24);',
+'    vec3 L3=normalize(vec3(.20,-.65,.70)), C3=vec3(.18,.42,1.);',
+'    col=base*(C1*.22+C2*.22+C3*.16)*(.45+.55*n.y);',
+'    col+=base*C1*max(dot(n,L1),0.)*2.30;',
+'    col+=base*C2*max(dot(n,L2),0.)*2.70;',
+'    col+=base*C3*max(dot(n,L3),0.)*1.10;',
+'    vec3 rf=reflect(rd,n);',
+'    col+=(h.y<1.5?.22:.05)*(C1*pow(max(rf.y,0.),2.)+C2*pow(max(-rf.x,0.),2.));',
+'    col+=C1*pow(max(dot(reflect(-L1,n),v),0.),sp)*.95;',
+'    col+=C2*pow(max(dot(reflect(-L2,n),v),0.),sp)*.75;',
+'    float fr=pow(1.-max(dot(n,v),0.),3.);',
+'    col+=fr*(C1*.32+C2*.24+vec3(.07));',
+'    if(h.y<.5){',
+'      col+=fr*.50*vec3(.55,.95,.25);',                                  // подсвеченное стекло
+'      col+=vec3(.35,.60,.10)*exp(-abs(p.y+.46)*46.)*.9;',               // блик по линии воды
+'    }',
+'    a=1.;',
+'  }',
+'  float tmax=hit?t:7.;',
+'  vec3 sm=vec3(0.); float tr=1.;',
+'  float ta=0.,tb=0.;',
+'  if(abs(rd.y)>1e-4){',
+'    float t1=(.95-ro.y)/rd.y, t2=(2.30-ro.y)/rd.y;',
+'    ta=max(min(t1,t2),.2); tb=min(max(t1,t2),tmax);',
+'  }',
+'  float dt=(tb-ta)/18.;',
+'  float jit=hs(vec3(gl_FragCoord.xy,floor(T*30.)));',
+'  if(S>.5&&tb>ta){',
+'    for(int i=0;i<18;i++){',
+'      float st=ta+dt*(float(i)+jit);',
+'      vec3 q=ro+rd*st;',
+'      if(q.y<.95||q.y>2.30) continue;',
+'      float up=q.y-.95;',
+'      vec2 ax=vec2(sin(q.y*1.7+T*.45),cos(q.y*1.2+T*.33))*.16*up;',  // струя ведёт в сторону
+'      float rad=.10+up*.40;',
+'      float rr=length(q.xz-ax);',
+'      if(rr>rad) continue;',
+'      vec3 w=q; w.xz=(w.xz-ax)*rt(q.y*.55+T*.20);',
+'      float d=vn(w*2.3+vec3(0.,-T*.42,0.))*.66+vn(w*5.1+vec3(0.,-T*.75,0.))*.34;',
+'      float mask=(1.-smoothstep(0.,rad,rr))*smoothstep(.95,1.04,q.y)*(1.-smoothstep(1.25,2.30,q.y));',
+'      float dn=max(d-.355,0.)*mask*dt*9.5;',
+'      if(dn<=0.) continue;',
+'      vec3 sc=mix(vec3(.66,.90,.28),vec3(.98,.40,.46),smoothstep(1.45,2.30,q.y));',
+'      dn=min(dn,.55);',
+'      sm+=sc*dn*tr*.85; tr*=1.-dn*.85;',
+'    }',
+'  }',
+'  vec3 fin=sm+col*tr;',
+'  float al=(1.-tr)+tr*a;',
+'  fin+=(hs(vec3(gl_FragCoord.xy,floor(T*24.)))-.5)/220.;',   // дизер против полос
+'  gl_FragColor=vec4(fin,al);',
+'}'
+].join('\n');
+
+function sh(type, src){
+  var s = gl.createShader(type);
+  gl.shaderSource(s, src); gl.compileShader(s);
+  if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { console.warn(gl.getShaderInfoLog(s)); return null; }
+  return s;
+}
+var vs = sh(gl.VERTEX_SHADER, VS), fs = sh(gl.FRAGMENT_SHADER, FS);
+if (!vs || !fs) return;
+var pr = gl.createProgram();
+gl.attachShader(pr, vs); gl.attachShader(pr, fs); gl.linkProgram(pr);
+if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) { console.warn(gl.getProgramInfoLog(pr)); return; }
+gl.useProgram(pr);
+
+var buf = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+var loc = gl.getAttribLocation(pr, 'p');
+gl.enableVertexAttribArray(loc);
+gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+gl.enable(gl.BLEND);
+gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+
+var uR = gl.getUniformLocation(pr, 'R'),
+    uT = gl.getUniformLocation(pr, 'T'),
+    uM = gl.getUniformLocation(pr, 'M'),
+    uS = gl.getUniformLocation(pr, 'S');
+
+var scale = 0.9, smoke = 1;
+function size(){
+  var r = stage.getBoundingClientRect();
+  var dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2) * scale);
+  var w = Math.max(1, Math.round(r.width * dpr)), hh = Math.max(1, Math.round(r.height * dpr));
+  if (cv.width !== w || cv.height !== hh) { cv.width = w; cv.height = hh; }
+  gl.viewport(0, 0, cv.width, cv.height);
+  gl.uniform2f(uR, cv.width, cv.height);
+}
+if ('ResizeObserver' in window) new ResizeObserver(size).observe(stage);
+else addEventListener('resize', size);
+size();
+stage.classList.add('live');
+
+/* поворот пальцем, а без него медленное вращение само */
+var yaw = 0.45, pit = -0.06, vel = RM ? 0 : 0.0022, drag = null;
+stage.addEventListener('pointerdown', function(e){
+  drag = {x:e.clientX, y:e.clientY};
+  stage.setPointerCapture(e.pointerId);
+  stage.classList.add('touched');
+  vel = 0;
+});
+stage.addEventListener('pointermove', function(e){
+  if (!drag) return;
+  yaw += (e.clientX - drag.x) * 0.009;
+  pit = Math.max(-0.75, Math.min(0.75, pit + (e.clientY - drag.y) * 0.006));
+  drag.x = e.clientX; drag.y = e.clientY;
+});
+['pointerup','pointercancel'].forEach(function(n){
+  stage.addEventListener(n, function(){ drag = null; if (!RM) vel = 0.0022; });
+});
+
+var vis = true;
+if ('IntersectionObserver' in window) {
+  new IntersectionObserver(function(es){ vis = es[0].isIntersecting; }, {threshold:0.02}).observe(stage);
+}
+
+/* Телефон не обязан тянуть трассировку: если кадр дорогой, роняем плотность,
+   потом дым, потом останавливаемся на статичной картинке. */
+var t0 = performance.now(), slow = 0, frames = 0, acc = 0, stopped = false;
+function frame(now){
+  if (stopped) return;
+  requestAnimationFrame(frame);
+  if (!vis || document.hidden) return;
+  if (!drag) yaw += vel;
+  gl.uniform1f(uT, (now - t0) / 1000);
+  gl.uniform2f(uM, yaw, pit);
+  gl.uniform1f(uS, smoke);
+  gl.drawArrays(gl.TRIANGLES, 0, 3);
+
+  acc += now - (frame.last || now); frame.last = now;
+  if (++frames === 30) {
+    var avg = acc / 30; frames = 0; acc = 0;
+    if (avg > 26) {
+      slow++;
+      if (slow === 1 && scale > 0.42) { scale = 0.42; size(); }
+      else if (slow === 2 && smoke) { smoke = 0; }
+      else if (slow >= 3 && RM === false) { stopped = true; }
+    } else { slow = 0; }
+  }
+}
+if (RM) { gl.uniform1f(uT, 0); gl.uniform2f(uM, yaw, pit); gl.uniform1f(uS, 0); gl.drawArrays(gl.TRIANGLES, 0, 3); }
+else requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
