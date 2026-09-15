@@ -987,7 +987,13 @@ size();
 stage.classList.add('live');
 
 /* поворот пальцем, а без него медленное вращение само */
-var yaw = 0.45, pit = -0.06, vel = RM ? 0 : 0.0022, drag = null;
+var yaw = 0.45, pit = -0.06, vel = RM ? 0 : 0.0022, drag = null, t0 = performance.now();
+function draw(now){
+  gl.uniform1f(uT, RM ? 0 : (now - t0) / 1000);
+  gl.uniform2f(uM, yaw, pit);
+  gl.uniform1f(uS, RM ? 0 : smoke);
+  gl.drawArrays(gl.TRIANGLES, 0, 3);
+}
 stage.addEventListener('pointerdown', function(e){
   drag = {x:e.clientX, y:e.clientY};
   stage.setPointerCapture(e.pointerId);
@@ -999,6 +1005,8 @@ stage.addEventListener('pointermove', function(e){
   yaw += (e.clientX - drag.x) * 0.009;
   pit = Math.max(-0.75, Math.min(0.75, pit + (e.clientY - drag.y) * 0.006));
   drag.x = e.clientX; drag.y = e.clientY;
+  // без анимации кадр никто не перерисует, а подсказка обещает поворот
+  if (RM) draw(0);
 });
 ['pointerup','pointercancel'].forEach(function(n){
   stage.addEventListener(n, function(){ drag = null; if (!RM) vel = 0.0022; });
@@ -1011,16 +1019,13 @@ if ('IntersectionObserver' in window) {
 
 /* Телефон не обязан тянуть трассировку: если кадр дорогой, роняем плотность,
    потом дым, потом останавливаемся на статичной картинке. */
-var t0 = performance.now(), slow = 0, frames = 0, acc = 0, stopped = false;
+var slow = 0, frames = 0, acc = 0, stopped = false;
 function frame(now){
   if (stopped) return;
   requestAnimationFrame(frame);
   if (!vis || document.hidden) return;
   if (!drag) yaw += vel;
-  gl.uniform1f(uT, (now - t0) / 1000);
-  gl.uniform2f(uM, yaw, pit);
-  gl.uniform1f(uS, smoke);
-  gl.drawArrays(gl.TRIANGLES, 0, 3);
+  draw(now);
 
   acc += now - (frame.last || now); frame.last = now;
   if (++frames === 30) {
@@ -1033,7 +1038,7 @@ function frame(now){
     } else { slow = 0; }
   }
 }
-if (RM) { gl.uniform1f(uT, 0); gl.uniform2f(uM, yaw, pit); gl.uniform1f(uS, 0); gl.drawArrays(gl.TRIANGLES, 0, 3); }
+if (RM) draw(0);
 else requestAnimationFrame(frame);
 })();
 </script>
